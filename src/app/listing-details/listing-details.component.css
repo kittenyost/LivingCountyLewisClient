@@ -1,0 +1,38 @@
+.listing-details {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.listing-image {
+  width: 100%; /* ✅ Ensures responsive scaling */
+  max-width: 600px; /* ✅ Limits width */
+  height: auto; /* ✅ Maintains aspect ratio */
+  max-height: 450px; /* ✅ Ensures images aren’t too short */
+  object-fit: contain; /* ✅ Keeps the full image without cropping */
+  display: block;
+  margin: 0 auto; /* ✅ Centers the image */
+  border-radius: 8px; /* ✅ Optional: Soft edges */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* ✅ Adds a light shadow */
+}
+.address {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.details-content {
+  text-align: left;
+  max-width: 600px;
+  margin: auto;
+}
+
+.btn-secondary {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: #555;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}

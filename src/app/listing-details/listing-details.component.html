@@ -1,0 +1,55 @@
+<!-- ✅ Listing Details Section -->
+<div class="listing-details-container" *ngIf="listing">
+  <img [src]="listing.image" alt="{{ listing.title }}" class="listing-image" />
+  <div class="listing-info">
+    <h2>{{ listing.title }}</h2>
+    <p class="address"><strong>📍 Address:</strong> {{ listing.address }}</p>
+    <p class="price"><strong>💲 Price:</strong> ${{ listing.price }}</p>
+    <p>{{ listing.description }}</p>
+
+    <!-- 🌍 Google Maps Link -->
+    <a [href]="getGoogleMapsUrl(listing.address)" target="_blank" class="btn btn-secondary">
+      📍 View on Map
+    </a>
+  </div>
+</div>
+
+<!-- 📬 Notify Me Form (cleaned) -->
+<div class="notify-form">
+  <h3>📬 Get Notified About Similar Listings</h3>
+  <input type="email"
+         [(ngModel)]="email"
+         placeholder="you@example.com"
+         class="notify-input" />
+  <button (click)="submitEmail()" class="btn btn-primary">Notify Me</button>
+</div>
+
+<!-- 🚫 Listing Not Found -->
+<ng-template #notFound>
+  <h2>🚨 Listing Not Found</h2>
+  <p>Sorry, we couldn't find this listing. Please check other properties.</p>
+  <a routerLink="/listings" class="btn btn-primary">Go Back to Listings</a>
+</ng-template>
+
+<!-- 👤 Small Print Agent Info -->
+<section class="small-print">
+  <h3>Contact Agent</h3>
+  <p><strong>Name:</strong> John Doe</p>
+  <p><strong>Phone:</strong> (555) 123-4567</p>
+  <p>
+    <strong>Email:</strong>
+    <a href="mailto:johndoe@example.com">johndoe&#64;example.com</a>
+  </p>
+
+  <!-- 📍 Repeated Map Link (optional, now fixed) -->
+  <h3>📍 Location</h3>
+  <a [href]="getGoogleMapsUrl(listing?.address)" target="_blank">View on Google Maps</a>
+
+  <!-- 🏡 Similar Listings -->
+  <h3>🏡 Similar Listings</h3>
+  <ul>
+    <li *ngFor="let similar of similarListings">
+      <a [routerLink]="['/listings', similar.id]">{{ similar.title }}</a> - ${{ similar.price }}
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,84 @@
+<h2 class="text-3xl font-bold text-center text-blue-600 my-6">🏡 Real Estate Listings</h2>
+
+<!-- 🌗 Dark Mode Toggle -->
+<div class="flex justify-center mb-4">
+  <button (click)="toggleDarkMode()" class="px-4 py-2 rounded shadow bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:text-white">
+    {{ isDarkMode ? "🌞 Light Mode" : "🌙 Dark Mode" }}
+  </button>
+</div>
+
+<!-- 🔍 Filters & Sorting -->
+<div class="filters-container flex flex-wrap justify-center gap-4 mb-6">
+  <input type="text"
+         [(ngModel)]="searchQuery"
+         placeholder="🔍 Search listings..."
+         class="px-4 py-2 border rounded w-64"
+         aria-label="Search listings" />
+
+  <select [(ngModel)]="selectedType" class="px-4 py-2 border rounded w-52" aria-label="Filter by property type">
+    <option value="">🏠 All Types</option>
+    <option *ngFor="let type of listingTypes" [value]="type">{{ type }}</option>
+  </select>
+
+  <select [(ngModel)]="selectedPriceRange" class="px-4 py-2 border rounded w-52" aria-label="Filter by price range">
+    <option value="">💲 All Prices</option>
+    <option value="low">Under $250,000</option>
+    <option value="mid">$250,000 - $500,000</option>
+    <option value="high">Over $500,000</option>
+  </select>
+
+  <select [(ngModel)]="sortOption" class="px-4 py-2 border rounded w-52" aria-label="Sort listings">
+    <option value="">🧮 Sort By</option>
+    <option value="lowToHigh">Price: Low to High</option>
+    <option value="highToLow">Price: High to Low</option>
+  </select>
+
+  <button class="px-4 py-2 bg-gray-300 rounded" (click)="resetFilters()">🔄 Reset Filters</button>
+</div>
+
+<!-- 🏡 Listings Grid -->
+<h3 class="text-xl font-semibold text-center mt-10 mb-4">🔎 Search Results</h3>
+<div class="listings-grid">
+  <div class="listing-card" *ngFor="let listing of getPagedListings()">
+    <img [src]="listing.image" alt="{{ listing.title }}" class="listing-image" />
+    <div class="listing-info">
+      <h3>{{ listing.title }}</h3>
+      <p><strong>💲</strong> ${{ listing.price }}</p>
+      <p><strong>📍</strong> {{ listing.address }}</p>
+      <a [routerLink]="['/listings', listing.id]" class="btn btn-primary">View Details</a>
+    </div>
+  </div>
+
+  <!-- 🧪 Coming Soon Placeholder Cards (4 total) -->
+  <div class="listing-card placeholder" *ngFor="let n of [1,2,3,4]">
+    <div class="listing-info">
+      <h3>📬 Coming Soon</h3>
+      <p>Be the first to know about new listings.</p>
+      <input type="email" [(ngModel)]="email" placeholder="you@example.com" class="email-input" />
+      <button (click)="submitEmail()" class="submit-button">Notify Me</button>
+    </div>
+  </div>
+</div>
+
+<!-- ⏩ Pagination -->
+<div class="flex justify-center items-center gap-2 mt-8 flex-wrap">
+  <button class="px-3 py-1 border rounded"
+          [disabled]="currentPage === 1"
+          (click)="prevPage()">
+    ⬅️ Prev
+  </button>
+
+  <button *ngFor="let page of [].constructor(totalPages); let i = index"
+          class="px-3 py-1 border rounded"
+          [class.bg-blue-500]="currentPage === i + 1"
+          [class.text-white]="currentPage === i + 1"
+          (click)="currentPage = i + 1">
+    {{ i + 1 }}
+  </button>
+
+  <button class="px-3 py-1 border rounded"
+          [disabled]="currentPage === totalPages"
+          (click)="nextPage()">
+    Next ➡️
+  </button>
+</div>

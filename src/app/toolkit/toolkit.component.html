@@ -1,0 +1,66 @@
+<section class="toolkit-hero">
+  <h1>🧰 Real Estate Agent Toolkit</h1>
+  <p>Your one-stop resource hub for templates, checklists, and scripts to close more deals with confidence.</p>
+  <a href="#templates" class="btn-primary">Explore Toolkit</a>
+</section>
+
+<section class="toolkit-section" id="templates">
+  <h2>📄 Templates</h2>
+  <ul>
+    <li>Client Intake Form</li>
+    <li>Listing Presentation Template</li>
+    <li>Open House Sign-In Sheet</li>
+  </ul>
+</section>
+
+<section class="toolkit-section">
+  <h2>✅ Checklists</h2>
+  <ul>
+    <li>Buyer Onboarding Checklist</li>
+    <li>Listing Prep Checklist</li>
+    <li>Closing Day Checklist</li>
+  </ul>
+</section>
+
+<section class="toolkit-section">
+  <h2>🗣️ Scripts</h2>
+  <ul>
+    <li>Cold Calling Script</li>
+    <li>Follow-Up Text Script</li>
+    <li>Open House Greeting Script</li>
+  </ul>
+</section>
+<section class="toolkit-downloads">
+  <h3>📎 Downloadable Templates</h3>
+  <ul>
+    <li><a href="/assets/toolkit/Buyer_Consultation_Checklist.pdf" download>📋 Buyer Consultation Checklist</a></li>
+    <li><a href="/assets/toolkit/Listing_Appointment_Script.docx" download>🗣️ Listing Appointment Script</a></li>
+    <li><a href="/assets/toolkit/Open_House_SignIn_Sheet.pdf" download>🏠 Open House Sign-In Sheet</a></li>
+    <li><a href="/assets/toolkit/Closing_Day_Checklist.pdf" download>✅ Closing Day Checklist</a></li>
+    <li><a href="/assets/toolkit/Seller_Prep_Guide.docx" download>📦 Seller Prep Guide</a></li>
+  </ul>
+</section>
+<section class="toolkit-intake">
+  <h2>📥 Client Intake Form</h2>
+
+  <form (ngSubmit)="submitForm()" #intakeForm="ngForm">
+    <div class="form-group">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="formData.name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="formData.email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <p *ngIf="formSubmitted">✅ Thank you! We received your information.</p>
+</section>

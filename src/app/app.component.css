@@ -1,0 +1,181 @@
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2d4a2d; /* Match logo colors */
+}
+
+.navbar-logo {
+  height: 60px; /* Adjust as needed */
+  width: auto;
+  max-width: 150px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+    .nav-links a:hover {
+      color: #ffcc00; /* Gold on hover */
+    }
+.navbar {
+  background-color: #333;
+  padding: 15px;
+  text-align: center;
+}
+
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .navbar li {
+    display: inline;
+    margin: 0 15px;
+  }
+
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+
+/* Hero Section Styles */
+.hero-section {
+  background-image: url('/assets/hero-bg.jpg'); /* ✅ Correct */
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  .hero-section p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+.hero-btn {
+  background: #ffcc00;
+  color: #1e3a2f;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+  .hero-btn:hover {
+    background: #d4a800;
+  }
+.navbar {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+  .nav-menu li {
+    position: relative;
+  }
+
+  .nav-menu a,
+  .dropbtn {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+    .dropbtn:hover,
+    .nav-menu a:hover {
+      color: #007bff;
+    }
+
+/* ✅ Fixes vertical dropdown */
+.dropdown {
+  position: relative; /* Ensure dropdown-content is positioned correctly */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Drop directly below the button */
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 9999; /* Ensures it appears above other content */
+  min-width: 180px;
+  flex-direction: column;
+  pointer-events: auto; /* Make sure items can be clicked */
+}
+
+  .dropdown-content li {
+    list-style: none;
+    width: 100%;
+  }
+    .dropdown-content li a {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dropdown-content li a {
+      display: block;
+      padding: 10px 15px;
+      white-space: nowrap;
+      color: #333;
+      text-decoration: none;
+    }
+
+      /* ✅ Blue hover effect for Local Areas city links */
+      .dropdown-content li a:hover {
+        background-color: #007bff; /* Blue background */
+        color: white; /* White text */
+        border-radius: 4px;
+      }
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+.dropbtn .arrow {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.dropbtn:hover .arrow {
+  color: #007bff;
+}

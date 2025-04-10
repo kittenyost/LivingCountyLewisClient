@@ -1,0 +1,29 @@
+<h2 class="admin-title">🏠 Admin Dashboard</h2>
+<div class="admin-controls">
+  <button (click)="addListing()" class="btn btn-success">Add New Listing</button>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let listing of listings">
+      <td>{{ listing.id }}</td>
+      <td>
+        <input [(ngModel)]="listing.title" />
+      </td>
+      <td>
+        <input [(ngModel)]="listing.price" type="number" />
+      </td>
+      <td>
+        <button (click)="deleteListing(listing.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

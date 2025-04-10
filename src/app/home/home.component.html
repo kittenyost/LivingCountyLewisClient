@@ -1,0 +1,56 @@
+<!-- 🏔️ Featured Banner -->
+<section class="featured-banner">
+  <img src="/assets/images/featured-banner.jpg" alt="Featured Banner" class="w-full h-64 object-cover rounded shadow" />
+</section>
+
+<!-- 🧮 Home Value Calculator Section (Dropdown) -->
+<section class="bg-white dark:bg-gray-900 px-6 pt-8 pb-4 text-black">
+  <div class="max-w-5xl mx-auto">
+    <div class="w-full md:w-2/3 md:ml-auto">
+      <button class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700 mb-4"
+              (click)="toggleCalculator()">
+        🏡 Find Your Home Value
+      </button>
+
+      <div *ngIf="showCalculator">
+        <app-home-value-calculator></app-home-value-calculator>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🏡 Northfork Realty Welcome Banner -->
+<section class="welcome-banner px-6 py-10 bg-blue-50 dark:bg-gray-800">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-4xl font-bold text-blue-700 dark:text-white mb-4">Welcome to Northfork Realty</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 bg-white bg-opacity-70 p-4 rounded shadow-md">
+      Your trusted partner in real estate. Discover homes, connect with agents, and experience a seamless buying or selling journey.
+    </p>
+  </div>
+</section>
+
+<!-- 🐱 Kitty Banner -->
+<div class="home-banner">
+  <h1 class="banner-text">Dreamin' of a New Home?</h1>
+  <img src="/assets/images/kitty_resized.jpg" alt="Dreaming of a New Home?" class="banner-img" />
+</div>
+
+<!-- 🏠 Featured Properties Section -->
+<section class="featured-listings">
+  <h2 class="featured-title">🏡 Featured Properties</h2>
+
+  <div class="listings-grid">
+    <div class="listing-card animate" *ngFor="let listing of featuredListings">
+      <img [src]="listing.image || '/assets/images/modern-familyhome_resized.jpg'" alt="{{ listing.title }}"
+           class="listing-image w-full h-48 object-cover rounded mb-4" />
+
+      <div class="listing-info">
+        <h3>{{ listing.title }}</h3>
+        <p class="price"><strong>💲 Price:</strong> ${{ listing.price }}</p>
+        <p class="address"><strong>📍 Address:</strong> {{ listing.address }}</p>
+        <p class="description">{{ listing.description }}</p>
+        <a [routerLink]="['/listings', listing.id]" class="btn btn-primary">View Details</a>
+      </div>
+    </div>
+  </div>
+</section>

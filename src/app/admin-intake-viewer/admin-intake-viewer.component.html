@@ -1,0 +1,30 @@
+<section class="admin-intake">
+  <h2>📋 Submitted Intake Forms</h2>
+
+  <table class="intake-table" *ngIf="leads.length > 0; else noData">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Submitted</th>
+        <th>Actions</th> <!-- ✅ New column -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lead of leads">
+        <td>{{ lead.name }}</td>
+        <td>{{ lead.email }}</td>
+        <td>{{ lead.phone }}</td>
+        <td>{{ lead.submittedAt | date:'short' }}</td>
+        <td>
+          <button (click)="deleteLead(lead.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p>No intake form submissions yet.</p>
+  </ng-template>
+</section>

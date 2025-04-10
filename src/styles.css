@@ -1,1 +1,213 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url('/assets/images/coverphoto.jpg');
+  background-size: cover; /* Make it fit the entire page */
+  background-position: center;
+  background-attachment: fixed;
+}
+  /* Global styles */
+
+  /* ✅ Translucent full-screen background image */
+  body::before {
+    content: "";
+    background-image: url('/assets/images/coverphoto.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.25; /* Increased for more brightness */
+    z-index: -1;
+    pointer-events: none;
+  }
+
+/* ✅ Optional global section background styling */
+main, section, .content-wrapper, .page-container {
+  background-color: rgba(255, 255, 255, 0.4); /* slightly more translucent */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ✅ Optional: Ensure footer has readable contrast */
+footer {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  z-index: 10;
+  position: relative;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 50px;
+  color: black; /* Ensure text is readable */
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, 0.7); /* Light background for readability */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #1D4ED8;
+  margin-top: 1rem;
+}
+
+.dark-mode {
+  background-color: #121212; /* Dark background */
+  color: white; /* Light text */
+}
+
+/* ✅ Light Mode */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* ✅ Style for the Toggle Button */
+.dark-mode-toggle {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ✅ Change Button Color in Dark Mode */
+.dark-mode .dark-mode-toggle {
+  background-color: #ffa500; /* Orange for contrast */
+  color: black;
+}
+
+/* Filters */
+.filters-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.search-input,
+.filter-dropdown {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+  .search-input:focus,
+  .filter-dropdown:focus {
+    outline: none;
+    border-color: #1D4ED8;
+  }
+
+/* Listings grid */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.listing-card {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+  .listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  }
+
+.listing-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.listing-info {
+  padding-top: 1rem;
+}
+
+.price {
+  color: #1D4ED8;
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #1D4ED8;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+  .btn:hover {
+    background-color: #2563eb;
+  }
+
+/* Dark mode styles */
+body.dark {
+  background-color: #121212;
+  color: #e5e5e5;
+}
+
+  body.dark .title {
+    color: #60A5FA;
+  }
+
+  body.dark .listing-card {
+    background-color: #1F2937;
+    border-color: #4B5563;
+  }
+
+  body.dark .listing-info {
+    color: #d1d5db;
+  }
+
+  body.dark .price {
+    color: #60A5FA;
+  }
+
+  body.dark .btn {
+    background-color: #4B5563;
+  }
+
+    body.dark .btn:hover {
+      background-color: #9CA3AF;
+    }
+.local-areas-menu a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+  .local-areas-menu a:hover {
+    background-color: #3b82f6; /* Tailwind blue-500 */
+    color: white;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 4px;
+  }
+
