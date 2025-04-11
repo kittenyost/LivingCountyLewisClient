@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-live-api-url.com/api' // Update for production
+  apiUrl: 'https://your-live-api-url.com',
+  adminEmail: 'admin@example.com',
+  adminPassword: 'yourPassword'
 };

@@ -1,10 +1,12 @@
 <nav class="navbar">
   <ul class="nav-menu">
     <li><a routerLink="/">Home</a></li>
-    <li><a *ngIf="isAdmin" routerLink="/admin">Admin</a></li>
-    <a routerLink="/admin/intake-viewer">📥 View Submissions</a>
+
+    <li *ngIf="isAdmin"><a routerLink="/admin">Admin</a></li>
+    <li *ngIf="isAdmin"><a (click)="logout()" style="cursor:pointer;">Logout</a></li>
+    <li *ngIf="isAdmin"><a routerLink="/admin/intake-viewer">📥 View Submissions</a></li>
     <li><a routerLink="/listings">Listings</a></li>
-    <li><a routerLink="/toolkit">Toolkit</a></li>
+    <li *ngIf="isAdmin"><a routerLink="/toolkit">Toolkit</a></li>
     <li><a routerLink="/buying">Buying</a></li>
     <li><a routerLink="/financing">Financing</a></li>
     <li><a routerLink="/about">About</a></li>
@@ -28,6 +30,7 @@
     </li>
   </ul>
 </nav>
+
 <main>
   <router-outlet></router-outlet>
 </main>

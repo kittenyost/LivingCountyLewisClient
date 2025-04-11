@@ -1,0 +1,24 @@
+.login-box {
+  max-width: 300px;
+  margin: 50px auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+  .login-box input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .login-box button {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
+}
