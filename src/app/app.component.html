@@ -2,11 +2,19 @@
   <ul class="nav-menu">
     <li><a routerLink="/">Home</a></li>
 
-    <li *ngIf="isAdmin"><a routerLink="/admin">Admin</a></li>
-    <li *ngIf="isAdmin"><a (click)="logout()" style="cursor:pointer;">Logout</a></li>
-    <li *ngIf="isAdmin"><a routerLink="/admin/intake-viewer">📥 View Submissions</a></li>
+    <!-- ✅ Admin Tools Dropdown (only visible to admin) -->
+    <li *ngIf="isAdmin" class="dropdown">
+      <button class="dropbtn">Admin Tools &#9662;</button>
+      <ul class="dropdown-content">
+        <li><a routerLink="/admin">Dashboard</a></li>
+        <li><a routerLink="/toolkit">Toolkit</a></li>
+        <li><a routerLink="/admin/intake-viewer">📥 View Submissions</a></li>
+        <li><a (click)="logout()" style="cursor:pointer;">Logout</a></li>
+      </ul>
+    </li>
+
+    <!-- ✅ Client + General Links -->
     <li><a routerLink="/listings">Listings</a></li>
-    <li *ngIf="isAdmin"><a routerLink="/toolkit">Toolkit</a></li>
     <li><a routerLink="/buying">Buying</a></li>
     <li><a routerLink="/financing">Financing</a></li>
     <li><a routerLink="/about">About</a></li>
@@ -31,10 +39,12 @@
   </ul>
 </nav>
 
+<!-- ✅ Add this -->
 <main>
   <router-outlet></router-outlet>
 </main>
 
+<!-- ✅ Keep your footer -->
 <footer class="footer">
   <p>&copy; 2025 Northfork Realty. All rights reserved.</p>
 </footer>

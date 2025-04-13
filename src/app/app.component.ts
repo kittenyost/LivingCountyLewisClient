@@ -18,13 +18,18 @@ export class AppComponent {
     this.checkAdmin();
   }
 
+  ngDoCheck(): void {
+    this.checkAdmin(); // ✅ runs on every change detection cycle
+  }
+
   checkAdmin(): void {
-    this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+    this.isAdmin = !!localStorage.getItem('adminToken'); // ✅ this detects login status
   }
 
   logout(): void {
-    localStorage.removeItem('isAdmin');
+    localStorage.removeItem('adminToken');
     this.isAdmin = false;
     this.router.navigate(['/']);
+    alert('You have been logged out.');
   }
 }

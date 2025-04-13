@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // ✅ Correct path
+import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolkit',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule], // ✅ this part is key
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './toolkit.component.html',
   styleUrls: ['./toolkit.component.css']
 })
-export class ToolkitComponent {
+export class ToolkitComponent implements OnInit {
   formData = {
     name: '',
     email: '',
@@ -18,8 +19,18 @@ export class ToolkitComponent {
   };
 
   formSubmitted = false;
+  isAdmin = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
+
+  ngOnInit(): void {
+    this.isAdmin = !!localStorage.getItem('adminToken');
+
+    if (!this.isAdmin) {
+      alert('Access denied. Admins only.');
+      this.router.navigate(['/']);
+    }
+  }
 
   submitForm() {
     console.log('📤 Sending form data to backend:', this.formData);
