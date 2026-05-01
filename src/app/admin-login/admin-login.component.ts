@@ -20,16 +20,16 @@ export class AdminLoginComponent {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(): void {
-    const loginData = {
-      Username: this.username.trim(),
-      Password: this.password
-    };
+   const loginData = {
+  username: this.username.trim(),
+  password: this.password.trim()
+};
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     console.log('🔐 Sending login data:', loginData);
 
-    this.http.post<any>('http://localhost:5287/api/admin/login', loginData, { headers }).subscribe({
+   this.http.post<any>('https://localhost:44351/api/Admin/login', loginData, { headers }).subscribe({
       next: (response) => {
         console.log('✅ Login response:', response);
 
@@ -50,9 +50,9 @@ export class AdminLoginComponent {
         }
       },
       error: (err) => {
-        console.error('❌ Login error:', err);
-        this.error = 'Invalid username or password';
-      }
+  console.error('❌ Login error:', err);
+  this.error = `Login failed: ${err.status} ${err.statusText}`;
+}
     });
   }
 }

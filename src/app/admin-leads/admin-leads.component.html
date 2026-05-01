@@ -1,0 +1,60 @@
+ <section style="max-width: 900px; margin: 30px auto; padding: 20px;">
+
+  <div style="margin-bottom: 20px;">
+    <h1 style="font-size: 28px; font-weight: bold; color: #1f2937;">
+      📋 Admin Lead Submissions
+    </h1>
+    <p style="color: #6b7280;">
+      View and manage contact form submissions from the website.
+    </p>
+  </div>
+
+  <div *ngIf="loading" style="padding: 12px; background: #f3f4f6; border-radius: 8px;">
+    Loading leads...
+  </div>
+
+  <div *ngIf="errorMessage" style="padding: 12px; background: #fee2e2; color: #991b1b; border-radius: 8px; margin-bottom: 15px;">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" style="padding: 12px; background: #dcfce7; color: #166534; border-radius: 8px; margin-bottom: 15px;">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="!loading && leads.length === 0" style="padding: 12px; background: #f9fafb; border-radius: 8px;">
+    No leads yet — new submissions will appear here.
+  </div>
+
+  <div *ngFor="let lead of leads" style="border: 1px solid #d1d5db; border-radius: 10px; padding: 18px; margin-bottom: 15px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.08);">
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+      <div>
+        <h2 style="font-size: 20px; font-weight: bold; color: #166534; margin: 0;">
+          {{ lead.name }}
+        </h2>
+        <p style="margin: 4px 0;"><strong>Email:</strong> {{ lead.email }}</p>
+        <p style="margin: 4px 0;"><strong>Phone:</strong> {{ lead.phone }}</p>
+      </div>
+
+      <button
+        type="button"
+        (click)="deleteLead(lead.id)"
+        style="background: #dc2626; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+        🗑 Delete
+      </button>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <p style="margin: 4px 0;"><strong>Message:</strong></p>
+      <p style="background: #f9fafb; padding: 10px; border-radius: 6px; margin: 0;">
+        {{ lead.message || 'No message provided.' }}
+      </p>
+    </div>
+
+    <p style="font-size: 12px; color: #6b7280; margin-top: 10px;">
+      Submitted: {{ lead.submittedAt | date:'medium' }}
+    </p>
+
+  </div>
+
+</section>

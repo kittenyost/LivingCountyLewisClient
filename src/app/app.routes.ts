@@ -8,6 +8,7 @@ import { BuyingComponent } from './buying/buying.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminIntakeViewerComponent } from './admin-intake-viewer/admin-intake-viewer.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminLeadsComponent } from './admin-leads/admin-leads.component';
 import { AuthGuard } from './auth.guard';
 
 const ListingsComponent = () => import('./listings/listings.component').then(m => m.ListingsComponent);
@@ -22,7 +23,6 @@ export const routes: Routes = [
   { path: 'financing', component: FinancingComponent },
   { path: 'buying', component: BuyingComponent },
 
-  // 🔹 Local Areas
   { path: 'local/centralia', loadComponent: () => import('./local-areas/centralia/centralia.component').then(m => m.CentraliaComponent) },
   { path: 'local/chehalis', loadComponent: () => import('./local-areas/chehalis/chehalis.component').then(m => m.ChehalisComponent) },
   { path: 'local/tumwater', loadComponent: () => import('./local-areas/tumwater/tumwater.component').then(m => m.TumwaterComponent) },
@@ -34,17 +34,14 @@ export const routes: Routes = [
   { path: 'local/oakville', loadComponent: () => import('./local-areas/oakville/oakville.component').then(m => m.OakvilleComponent) },
   { path: 'local/rochester', loadComponent: () => import('./local-areas/rochester/rochester.component').then(m => m.RochesterComponent) },
 
-  // 🔐 Admin Routes
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'admin/intake-viewer', component: AdminIntakeViewerComponent, canActivate: [AuthGuard] },
-  { path: 'toolkit', loadComponent: ToolkitComponent, canActivate: [AuthGuard] }, // 🔐 Restricted too
+  { path: 'admin/leads', component: AdminLeadsComponent, canActivate: [AuthGuard] },
+  { path: 'toolkit', loadComponent: ToolkitComponent, canActivate: [AuthGuard] },
 
-  // 🌐 Fallback
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);
-
-
 
