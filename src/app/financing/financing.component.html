@@ -7,17 +7,36 @@
       We’ll help you find the best local loan officer to get you competitive rates and the programs that best fit your individual needs. Fill out this form and we’ll connect you with a lender today!
     </p>
 
-    <form class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow">
-      <input type="text" placeholder="First Name" class="p-3 rounded border dark:bg-gray-700" />
-      <input type="text" placeholder="Last Name" class="p-3 rounded border dark:bg-gray-700" />
-      <input type="email" placeholder="Email Address" class="p-3 rounded border dark:bg-gray-700 col-span-1 md:col-span-2" />
-      <input type="tel" placeholder="Phone Number" class="p-3 rounded border dark:bg-gray-700 col-span-1 md:col-span-2" />
-      <textarea rows="4" placeholder="Your Message" class="p-3 rounded border dark:bg-gray-700 col-span-1 md:col-span-2"></textarea>
-      <button class="col-span-1 md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
-        Start the Process
-      </button>
-    </form>
+   <form (ngSubmit)="submitForm()" #financingForm="ngForm" class="space-y-5">
+  <div class="relative border-2 border-gray-600 rounded p-4 bg-white dark:bg-gray-800 shadow-sm">
+    <label for="name" class="block font-semibold mb-1">Your First and Last Name</label>
+    <input type="text" id="name" name="name" [(ngModel)]="formData.name" required
+      class="w-full px-4 py-2 border border-gray-300 rounded">
+  </div>
 
+  <div class="relative border-2 border-gray-600 rounded p-4 bg-white dark:bg-gray-800 shadow-sm">
+    <label for="email" class="block font-semibold mb-1">Your Email Address</label>
+    <input type="email" id="email" name="email" [(ngModel)]="formData.email" required
+      class="w-full px-4 py-2 border border-gray-300 rounded">
+  </div>
+
+  <div class="relative border-2 border-gray-600 rounded p-4 bg-white dark:bg-gray-800 shadow-sm">
+    <label for="phone" class="block font-semibold mb-1">Your Phone Number</label>
+    <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required
+      class="w-full px-4 py-2 border border-gray-300 rounded">
+  </div>
+
+  <div class="relative border-2 border-gray-600 rounded p-4 bg-white dark:bg-gray-800 shadow-sm">
+    <label for="message" class="block font-semibold mb-1">Tell us about your financing needs</label>
+    <textarea id="message" name="message" [(ngModel)]="formData.message" rows="5" required
+      class="w-full px-4 py-2 border border-gray-300 rounded"></textarea>
+  </div>
+
+  <button type="submit"
+    class="bg-green-300 hover:bg-green-400 text-black font-semibold px-6 py-2 rounded transition duration-300 w-full sm:w-auto">
+    ✅ Start the Process
+  </button>
+</form>
     <div class="mt-12">
       <h2 class="text-2xl font-semibold mb-2">The Home Loan Process</h2>
       <p class="mb-6">
